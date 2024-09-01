@@ -63,7 +63,7 @@ const page = () => {
 
 			<Button
 				className='bg-[#D5F902] text-black hover:bg-[#D5F902]/90 
-			transition-all duration-500 text-lg'
+				transition-all duration-500 text-lg py-5'
 				onClick={handleClick}>
 				Hoy no me la jale
 			</Button>

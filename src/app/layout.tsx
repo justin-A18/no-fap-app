@@ -5,16 +5,20 @@ import type { Metadata } from 'next';
 import { cn } from './_lib/utils';
 import './globals.css';
 import { NavBar } from './_components/shared/navbar';
+import { Footer } from './_components/shared/footer';
 
 const poppins = Poppins({ weight: ['300', '500', '700'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'No FAP',
+	title: 'Desafío No FAP - Mejora tu Fuerza de Voluntad y Gana Premios',
 	description:
-		'Únete al desafío del "No Fap" y pon a prueba tu fuerza de voluntad para sobrevivir y ganar premios increíbles. Compite, supera tus límites y alcanza tus metas mientras te diviertes en el camino. ¡Acepta el reto y demuestra de qué estás hecho!',
+		'Únete al desafío No Fap, supera tus límites, mejora tu fuerza de voluntad y gana premios increíbles. Descubre cómo alcanzar tus metas mientras te diviertes.',
+	keywords:
+		'No Fap, fuerza de voluntad, desafío, premios, superación personal, salud mental, crecimiento personal',
 	icons: {
 		icon: '/logo.svg',
 	},
+	authors: [{ name: 'pecausa.oficial' }],
 };
 
 export default function RootLayout({
@@ -39,6 +43,7 @@ export default function RootLayout({
 				<TanStackProvider>
 					<NavBar />
 					{children}
+					<Footer />
 				</TanStackProvider>
 			</body>
 		</html>
