@@ -18,7 +18,7 @@ const storageData = typeof window != 'undefined'
 	: initialValue;
 
 const storageRacha = typeof window != 'undefined'
-	? JSON.parse(localStorage.getItem('racha')!)
+	? Number(localStorage.getItem('racha'))
 	: 0;
 
 export const useStore = create<Store>()((set) => ({
