@@ -21,7 +21,11 @@ export const NavBar = () => {
 			className='p-4 w-full'
 			suppressHydrationWarning>
 			<nav className='flex items-center justify-between'>
-				<span className='text-2xl font-bold uppercase'>no fap</span>
+				<Link
+					href='/'
+					className='text-2xl font-bold uppercase'>
+					no fap
+				</Link>
 
 				<ul className='items-center gap-6 bg-[#191919] hidden md:flex px-8 py-3 rounded-full text-sm'>
 					{navLinks.map(({ label, href }) => (
