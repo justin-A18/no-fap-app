@@ -1,20 +1,35 @@
 'use client';
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from '@/app/_components/ui/dropdown-menu';
 
 import { useHashActive } from '@/app/_hooks/useHashActive';
 import { navLinks } from '@/config/consts/navLinks';
-import Link from 'next/link';
 import { FormatHelper } from '@/config/helpers';
 import { useStore } from '@/app/_providers';
 import { useEffect, useState } from 'react';
+import { LogOut } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export const NavBar = () => {
 	const { hashActive } = useHashActive();
-	const { user } = useStore();
+	const { user, logout } = useStore();
 
 	const [isClient, setIsClient] = useState(false);
 	useEffect(() => {
 		setIsClient(true);
 	}, []);
+
+	const router = useRouter();
+
+	const handleLogout = () => {
+		logout()
+		router.push('/auth/register');
+	}
 
 	return (
 		<header
@@ -47,7 +62,7 @@ export const NavBar = () => {
 					))}
 				</ul>
 
-				{!user && isClient ? (
+				{!user && isClient || user?.name === '' ? (
 					<Link
 						href='/auth/register'
 						className='border border-[#D5F902] px-6 py-2 rounded-full
@@ -56,11 +71,27 @@ export const NavBar = () => {
 						Register
 					</Link>
 				) : (
-					<span
-						className='rounded-full size-10 text-black font-bold flex 
+					<DropdownMenu>
+						<DropdownMenuTrigger>
+							<span
+								className='rounded-full size-10 text-black font-bold flex 
 					items-center justify-center bg-[#D5F902]'>
-						{isClient && user ? FormatHelper.formatFirstName(user.name) : null}
-					</span>
+								{isClient && user
+									? FormatHelper.formatFirstName(user.name)
+									: null}
+							</span>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent
+							className='-right-2 top-0 absolute bg-[#D5F902] 
+						border-none'>
+							<DropdownMenuItem
+								className='focus:bg-[#D5F902]/80 
+							flex items-center gap-2 cursor-pointer'
+								onClick={handleLogout}>
+								<LogOut /> Logout
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				)}
 			</nav>
 		</header>

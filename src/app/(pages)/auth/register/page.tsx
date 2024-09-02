@@ -118,7 +118,7 @@ const RegisterPage = () => {
 					variant='custom'
 					type='submit'
 					size='lg'
-					isLoading={false}>
+					isLoading={registerMutation.isPending}>
 					<Mail /> Registrarse
 				</LoadingButton>
 			</form>

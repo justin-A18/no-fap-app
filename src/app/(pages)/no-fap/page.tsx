@@ -1,10 +1,12 @@
 'use client';
 
 import { CustomAlert } from '@/app/_components/shared/alerts';
+import { LoadingButton } from '@/app/_components/shared/buttons';
 import { TypographyH1, TypographyH2 } from '@/app/_components/typography';
 import { Button } from '@/app/_components/ui/button';
 import { useUpdateRacha } from '@/app/_hooks/fap/useUpdateRacha';
 import { useStore } from '@/app/_providers';
+import { Fingerprint } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -61,12 +63,14 @@ const page = () => {
 
 			<TypographyH2>Tú puedes soldado</TypographyH2>
 
-			<Button
-				className='bg-[#D5F902] text-black hover:bg-[#D5F902]/90 
-				transition-all duration-500 text-lg py-5'
-				onClick={handleClick}>
-				Hoy no me la jale
-			</Button>
+			<LoadingButton
+				variant='custom'
+				type='submit'
+				size='lg'
+				onClick={handleClick}
+				isLoading={updateRachaMutation.isPending}>
+				<Fingerprint /> Hoy no me la jale
+			</LoadingButton>
 		</div>
 	);
 };

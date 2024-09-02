@@ -13,12 +13,12 @@ interface Store {
 
 export const initialValue = { email: "", name: "", racha: 0 };
 
-const storageData = typeof window != 'undefined'
+const storageData = typeof window != 'undefined' && localStorage.getItem('user')
 	? JSON.parse(localStorage.getItem('user')!)
 	: initialValue;
 
-const storageRacha = typeof window != 'undefined'
-	? Number(localStorage.getItem('racha'))
+const storageRacha = typeof window != 'undefined' && localStorage.getItem('racha')
+	? Number(localStorage.getItem('racha')!)
 	: 0;
 
 export const useStore = create<Store>()((set) => ({
@@ -26,8 +26,8 @@ export const useStore = create<Store>()((set) => ({
 	racha: storageRacha,
 	login: (user) => set(() => ({ user })),
 	logout: () => set((state) => {
-		localStorage.removeItem('user');
-		return { ...state, user: initialValue };
+		localStorage.clear();
+		return { ...state, user: initialValue, racha: 0 };
 	}),
 	updateRacha: (racha) => set(() => ({ racha })),
 }));
