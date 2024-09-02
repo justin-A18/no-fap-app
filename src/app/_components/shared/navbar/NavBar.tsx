@@ -72,7 +72,7 @@ export const NavBar = () => {
 					</Link>
 				) : (
 					<DropdownMenu>
-						<DropdownMenuTrigger>
+						<DropdownMenuTrigger className='focus:border-none'>
 							<span
 								className='rounded-full size-10 text-black font-bold flex 
 					items-center justify-center bg-[#D5F902]'>
