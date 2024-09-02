@@ -33,7 +33,7 @@ const page = () => {
 	};
 
 	return (
-		<div className='flex items-center flex-col gap-8'>
+		<div className='flex items-center flex-col gap-8 w-full'>
 			<TypographyH1>Racha N°</TypographyH1>
 
 			{updateRachaMutation.isError && (
